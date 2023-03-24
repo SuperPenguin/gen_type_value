@@ -1,0 +1,16 @@
+targets:
+  $default:
+    builders:
+      gen_type_value:
+        enabled: true
+        generate_for:
+          - lib/*
+
+builders:
+  createThemeBuilder:
+    import: 'package:gen_type_value/builder.dart'
+    builder_factories: ['genTypeValueBuilder']
+    auto_apply: dependents
+    build_extensions: { '.dart': ['.gen_type_value.dart'] }
+    build_to: cache
+    applies_builders: ['source_gen|combining_builder']
